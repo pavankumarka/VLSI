@@ -1,0 +1,55 @@
+module uni_gates_tb();
+  reg   t_i_in1;
+  reg   t_i_in2;
+  wire  t_o_not_g; 
+  wire  t_o_or_g;
+  wire  t_o_and_g; 
+  wire  t_o_nor_g;
+  wire  t_o_nand_g;
+ 
+wire  t_o_xor_g;
+ 
+wire  t_o_xnor_g;
+  
+  uni_gates my_uni_gates (  .i_in1( t_i_in1 ), 
+                            .i_in2( t_i_in2 ), 
+                            .o_not_g( t_o_not_g ), 
+                            .o_or_g( t_o_or_g ), 
+                            .o_and_g( t_o_and_g ), 
+                            .o_nor_g( t_o_nor_g ), 
+                            .o_nand_g( t_o_nand_g ), 
+                            .o_xor_g( t_o_xor_g ), 
+                            .o_xnor_g( t_o_xnor_g ) );
+  initial
+  begin
+    $monitor( t_i_in1, 
+              t_i_in2, 
+              t_o_not_g, 
+              t_o_or_g, 
+              t_o_and_g, 
+              t_o_nor_g, 
+              t_o_nand_g, 
+              t_o_xor_g, 
+              t_o_xnor_g);
+    #0
+    t_i_in1 = 1'b0; 
+    t_i_in2 = 1'b0;
+    
+    #10
+    t_i_in1 = 1'b0; 
+    t_i_in2 = 1'b1;
+    
+    #10
+    t_i_in1 = 1'b1; 
+    t_i_in2 = 1'b0;
+    
+    #10
+    t_i_in1 = 1'b1; 
+    t_i_in2 = 1'b1;
+    
+    #10
+    t_i_in1 = 1'b0; 
+    t_i_in2 = 1'b0;
+  end
+endmodule
+
